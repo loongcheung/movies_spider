@@ -1,18 +1,19 @@
 /**
  * Created by zhanglongyu on 2018/1/23.
  */
-const model = require('./model');
+const Koa = require('koa');
+const app = new Koa();
+const serve = require('koa-static')
+const routes = require('./router/index.js');
 
-let Pet = model.Pets;
+app.use(async (ctx,next)=>{
+    ctx.set('Access-Control-Allow-Origin','*');
+    await next();
+});
 
-Pet.findAll({
-    where: {
-        name: 'Gaffey'
-    }
-}).then(res => {
-    for (let p of res) {
-        console.log(JSON.stringify(p));
-    }
-}).catch(err => {
-    console.log(err)
-})
+app.use(serve('static/posts'));
+
+app.use(routes);
+
+app.listen(8000);
+console.log('app started at port 8000');

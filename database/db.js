@@ -40,11 +40,11 @@ function defineModel(name, attributes) {
         type: ID_TYPE,
         primaryKey: true
     };
-    attrs.createdAt = {
+    attrs.createAt = {
         type: Sequelize.BIGINT,
         allowNull: false
     };
-    attrs.updatedAt = {
+    attrs.updateAt = {
         type: Sequelize.BIGINT,
         allowNull: false
     };
@@ -63,8 +63,8 @@ function defineModel(name, attributes) {
                     if (!obj.id) {
                         obj.id = generateId();
                     }
-                    obj.createdAt = now;
-                    obj.updatedAt = now;
+                    obj.createAt = now;
+                    obj.updateAt = now;
                     obj.version = 0;
                 } else {
                     console.log('will update entity...');

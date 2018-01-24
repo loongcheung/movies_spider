@@ -2,3 +2,5 @@ node_modules/
 kh/
 *.zip
 .idea/
+static/posts/*.*
+static/screen/*.*
