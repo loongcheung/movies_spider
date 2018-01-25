@@ -5,10 +5,10 @@ const router = require('koa-router')();
 const controllers = require('../controller/index');
 
 /*
- * @param curr 当前页数 limit 每页显示多少 type 影片类型 <json string>
+ * @param curr 当前页数 limit 每页显示多少 type 影片类型 <json string>  order 排序参数 0更新时间 1评分
  * */
 router.get('/movie', async (ctx, next) => {
-    await controllers.getMovieList(parseInt(ctx.query.curr), parseInt(ctx.query.limit), ctx.query.query ? JSON.parse(ctx.query.query) : '').then((res) => {
+    await controllers.getMovieList(parseInt(ctx.query.curr), parseInt(ctx.query.limit), ctx.query.query ? JSON.parse(ctx.query.query) : '', parseInt(ctx.query.order) ? parseInt(ctx.query.order) : 0).then((res) => {
         ctx.body = res;
     });
     await next();
