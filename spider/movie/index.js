@@ -22,15 +22,16 @@ function getMovieList(page) {
                 Movie.create({
                     name: res[0],
                     type: res[1],
-                    region:res[2],
+                    region: res[2],
                     language: res[3],
                     time: res[4],
                     release_data: res[5],
                     update_data: res[6],
-                    actor: res[7],
-                    director: res[8],
-                    description: res[9],
-                    thunder: res[10]
+                    score: res[7].replace('分豆瓣评论', ''),
+                    actor: res[8],
+                    director: res[9],
+                    description: res[10],
+                    thunder: res[11]
                 }).then(function (p) {
                     console.log('created.' + JSON.stringify(p));
                 }).catch(function (err) {
@@ -46,7 +47,7 @@ function getMovieList(page) {
         }
         if ($('.list_mov').length === 24) {
             getMovieList(++page)
-        }else {
+        } else {
             return false;
         }
     });
@@ -63,9 +64,6 @@ async function getMovieDetails(href) {
                     return false
                 } else {
                     $$(elem).html().split(/<br>/).forEach((item, index) => {
-                        if (index === $$(elem).html().split(/<br>/).length - 1) {
-                            return false;
-                        }
                         let infoArray = $$(item).text().replace(/\s/g, '').split(/\n/);
                         infoArray.forEach(function (iitem, iindex) {
                             info.push(iitem.split('：')[1])
@@ -74,10 +72,11 @@ async function getMovieDetails(href) {
                 }
             });
             let thunderSrc = '';
-            $$('.td-dl-buttons a').each((i,ele)=>{
+            $$('.td-dl-buttons a').each((i, ele) => {
                 thunderSrc += $$(ele).attr('href') + '&&'
             });
             info.unshift($$('#movie_name').text().split(/\s/)[5]);
+            info.splice(info.length - 1, 1);
             info.push($$('#movie_description').text());
             info.push(thunderSrc);
             getMovieScreen($$);
@@ -93,7 +92,7 @@ function getMoviePost($) {
         request.get(imgSrc).end((err, res) => {
             let imgPath = "/" + $(this).find('.list_mov_title a').text().replace('/movie/', '') + "." + imgSrc.split(".").pop();
             if (res) {
-                fs.writeFile(__dirname + "/static/posts" + imgPath, res.body, "binary",function (err) {
+                fs.writeFile(__dirname.replace(/\\spider\\movie/, '') + "/static/posts" + imgPath, res.body, "binary", function (err) {
                     if (err) {
                         console.log(err)
                     }
@@ -109,7 +108,7 @@ function getMovieScreen($) {
         request.get(imgSrc).end((err, res) => {
             let imgPath = "/" + $('#movie_name').text().split(/\s/)[5] + "." + imgSrc.split(".").pop();
             if (res) {
-                fs.writeFile(__dirname + "/static/screen" + imgPath, res.body, "binary",function (err) {
+                fs.writeFile(__dirname.replace(/\\spider\\movie/, '') + "/static/screen" + imgPath, res.body, "binary", function (err) {
                     if (err) {
                         console.log(err)
                     }

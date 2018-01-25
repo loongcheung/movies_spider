@@ -3,7 +3,7 @@
  */
 const Koa = require('koa');
 const app = new Koa();
-const serve = require('koa-static')
+const serve = require('koa-static');
 const routes = require('./router/index.js');
 
 app.use(async (ctx,next)=>{

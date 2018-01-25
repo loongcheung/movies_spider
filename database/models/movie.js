@@ -15,6 +15,7 @@ module.exports = db.defineModel('movie', {
     time: db.STRING(20),
     release_data: db.STRING(50),
     update_data: db.STRING(50),
+    score: db.STRING(10),
     actor: db.STRING(500),
     director: db.STRING(500),
     description: db.STRING(500),
