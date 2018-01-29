@@ -21,7 +21,8 @@ async function getMovieList(curr, limit, query, order) {
                     Movie.findAll({
                         limit,
                         offset: start,
-                        order: sqlOrder
+                        order: sqlOrder,
+                        attributes: ['id','name','createAt','updateAt','version']
                     }).then((res) => {
                         let list = [];
                         for (let l of res) {
@@ -67,7 +68,8 @@ async function getMovieList(curr, limit, query, order) {
                                 type: {
                                     $like: `%${query.type}%`
                                 }
-                            }
+                            },
+                            attributes: ['id','name','createAt','updateAt','version']
                         }).then((res) => {
                             let list = [];
                             for (let l of res) {
@@ -110,7 +112,8 @@ async function getMovieList(curr, limit, query, order) {
                                 region: {
                                     $like: `%${query.region}%`
                                 }
-                            }
+                            },
+                            attributes: ['id','name','createAt','updateAt','version']
                         }).then((res) => {
                             let list = [];
                             for (let l of res) {
@@ -153,7 +156,8 @@ async function getMovieList(curr, limit, query, order) {
                                 language: {
                                     $like: `%${query.language}%`
                                 }
-                            }
+                            },
+                            attributes: ['id','name','createAt','updateAt','version']
                         }).then((res) => {
                             let list = [];
                             for (let l of res) {
@@ -206,7 +210,8 @@ async function getMovieList(curr, limit, query, order) {
                                         $like: `%${query.region}%`
                                     }
                                 }
-                            }
+                            },
+                            attributes: ['id','name','createAt','updateAt','version']
                         }).then((res) => {
                             let list = [];
                             for (let l of res) {
@@ -259,7 +264,8 @@ async function getMovieList(curr, limit, query, order) {
                                         $like: `%${query.language}%`
                                     }
                                 }
-                            }
+                            },
+                            attributes: ['id','name','createAt','updateAt','version']
                         }).then((res) => {
                             let list = [];
                             for (let l of res) {
@@ -312,7 +318,8 @@ async function getMovieList(curr, limit, query, order) {
                                         $like: `%${query.language}%`
                                     }
                                 }
-                            }
+                            },
+                            attributes: ['id','name','createAt','updateAt','version']
                         }).then((res) => {
                             let list = [];
                             for (let l of res) {
@@ -363,7 +370,8 @@ async function getMovieList(curr, limit, query, order) {
                                         $like: `%${query.language}%`
                                     }
                                 }
-                            }
+                            },
+                            attributes: ['id','name','createAt','updateAt','version']
                         }).then((res) => {
                             let list = [];
                             for (let l of res) {
@@ -420,7 +428,8 @@ async function search(query, curr, limit) {
                         $like: `%${query}%`
                     }
                 }
-            }
+            },
+            attributes: ['id','name','description','createAt','updateAt','version']
         }).then((res) => {
             let list = [];
             for (let l of res) {
