@@ -7,7 +7,7 @@
 
 * 获取电影列表
 
-url: /movie  query: curr 当前页数 limit 每页显示多少 query 影片类型 <json strin: type,region,language>  order 排序参数 0更新时间 1评分
+url: /movie  query: curr 当前页数 limit 每页显示多少 query 影片类型 <json string: type,region,language>  order 排序参数 0更新时间 1评分
 
 示例：http://localhost:8000/movie?curr=1&limit=20&query={%20%22type%22:%20%22%E6%82%AC%E7%96%91%22,%20%22language%22:%20%22%E8%8B%B1%E8%AF%AD%22%20}
 
@@ -138,7 +138,7 @@ url: /search  query: query 搜索关键词（包括影片名称、演员和导�
 
 total 总数 
 
-<h3 style="color:red">数据只是部分展示，总影片数大概是八千多部<h3>
+<font size=4 color=#FF0000>数据只是部分展示，总影片数大概是八千多部!!!</font>
 
 _电视剧和综艺后续再开发。。。_
 
