@@ -1,7 +1,7 @@
 ## 说明
 利用node爬取80s网的电影、电视剧和综艺数据，并封装接口以便前端或客户端使用。
 
-## 技术栈：superagent+cheerio+mysqk+sequelize+koa+koa-router+koa-static
+## 技术栈：superagent+cheerio+mysql+sequelize+koa+koa-router+koa-static
 
 ## 接口说明
 
