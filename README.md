@@ -1,13 +1,13 @@
 ## 说明
 利用node爬取80s网的电影、电视剧和综艺数据，并封装接口以便前端或客户端使用。
 
-## 技术栈：superagent+cheerio+mysql+sequelize+koa+koa-router+koa-static
+### 技术栈：superagent+cheerio+mysql+sequelize+koa+koa-router+koa-static
 
-## mysql数据库配置说明
+### mysql数据库配置说明
 
 * 打开命令行，创建数据库movie_database， CREATE DATABASE movie_database;
 * USE movie_database; 进入对应数据库。
-* grant all privileges on test.* to 'www'@'%' identified by 'www';  此命令作用是创建MySQL的用户名和口令，均为www，并赋予操作test数据库的所有权限。
+* grant all privileges on movie_database.* to 'www'@'%' identified by 'www';  此命令作用是创建MySQL的用户名和口令，均为www，并赋予操作test数据库的所有权限。
 * 创建movie表。sql语句如下：
 
 ```sql
@@ -34,7 +34,7 @@ CREATE TABLE `movie` (
 
 
 
-## 接口说明
+### 接口说明
 
 * 获取电影列表
 
