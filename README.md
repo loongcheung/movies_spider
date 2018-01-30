@@ -3,6 +3,37 @@
 
 ## 技术栈：superagent+cheerio+mysql+sequelize+koa+koa-router+koa-static
 
+## mysql数据库配置说明
+
+* 打开命令行，创建数据库movie_database， CREATE DATABASE movie_database;
+* USE movie_database; 进入对应数据库。
+* grant all privileges on test.* to 'www'@'%' identified by 'www';  此命令作用是创建MySQL的用户名和口令，均为www，并赋予操作test数据库的所有权限。
+* 创建movie表。sql语句如下：
+
+```sql
+CREATE TABLE `movie` (
+  `id` varchar(50) NOT NULL,
+  `name` char(100) NOT NULL,
+  `type` char(100) DEFAULT NULL,
+  `region` varchar(50) DEFAULT NULL,
+  `language` varchar(50) DEFAULT NULL,
+  `time` varchar(20) DEFAULT NULL,
+  `release_data` varchar(50) DEFAULT NULL,
+  `update_data` varchar(50) DEFAULT NULL,
+  `score` char(10) DEFAULT NULL,
+  `actor` text,
+  `director` text,
+  `description` text,
+  `thunder` text NOT NULL,
+  `createAt` bigint(20) NOT NULL,
+  `updateAt` bigint(20) NOT NULL,
+  `version` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+```
+
+
+
 ## 接口说明
 
 * 获取电影列表
